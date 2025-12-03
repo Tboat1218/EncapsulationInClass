@@ -6,13 +6,15 @@ namespace EncapsulationInClass
     {
         static void Main(string[] args)
         {
-            var mAcct = new BankAccount(400);
+            BankAccount account = new BankAccount(0);
 
-            mAcct.Deposit(30000);
+            Console.WriteLine("How much would you like to deposit?");
+            double amountToDeposit = double.Parse(Console.ReadLine());
 
-            var bal = mAcct.GetBalance();
+            account.Deposit(amountToDeposit);
 
-            mAcct.Withdraw(300);
+            Console.WriteLine($"Thank you! Your balance is now {account.Balance}");
         }
     }
 }
+

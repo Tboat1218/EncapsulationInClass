@@ -1,28 +1,40 @@
-﻿using System;
-namespace EncapsulationInClass
+﻿namespace EncapsulationInClass
 {
     public class BankAccount
     {
-        private double balance;
+        // 1) Private field – ONLY this class can touch it directly
+        private double balance = 0;
 
-        public BankAccount(double amount)
+        // 2) Public property – other code can READ the balance, but not change it
+        public double Balance
         {
-            balance = amount;
+            get { return balance; }      // allows read access
+            private set { balance = value; } // only BankAccount can set it
         }
 
+        // 3) Constructor – runs when you create a new BankAccount
+        public BankAccount(double initialAmount)
+        {
+            Balance = initialAmount;
+        }
+
+        // 4) Deposit – add money
         public void Deposit(double amount)
         {
-            balance += amount;
+            Balance += amount;
         }
 
-        public double GetBalance()
-        {
-            return balance;  
-        }
-
+        // 5) Withdraw – remove money
         public void Withdraw(double amount)
         {
-            balance -= amount;
+            Balance -= amount;
+        }
+
+        // 6) Optional method – another way to read the balance
+        public double GetBalance()
+        {
+            return Balance;
         }
     }
 }
+
